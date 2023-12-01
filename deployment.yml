@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginxapp
+  namespace: nginx-hpa
+  labels:
+    myapp: mchalhi
+spec:
+  replicaas: 1
+  selector:
+    mathLabels:
+      myapp: mchalhi
+  template:
+    metadata:
+      labels:
+        myapp: mchalhi
+    spec:
+      containers:
+        image: public.ecr.aws/g7l4n5q7/mchalhi
+        name: podMchalhi
+        ports:
+          containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
